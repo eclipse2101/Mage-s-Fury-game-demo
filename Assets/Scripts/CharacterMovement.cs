@@ -6,7 +6,8 @@ public class CharacterMovement : MonoBehaviour
 {
     public float speed = 6f;
     public float hInput; 
-    public float vInput;  
+    public float vInput; 
+    public CharacterController  player; // think of this as the motor that controls our player 
     
     
     // Start is called before the first frame update
@@ -29,8 +30,11 @@ public class CharacterMovement : MonoBehaviour
         
         transform.Translate(Vector3.forward * Time.deltaTime * speed * vInput);
         transform.Translate(Vector3.right * Time.deltaTime * speed * hInput);
+        
+        Vector3 direction = new Vector3(hInput, 0f, vInput).normalized; // this is to mnake sure that when you press 2 buttons you dont move faster.
+        
     
-    
+        
     
     
     
