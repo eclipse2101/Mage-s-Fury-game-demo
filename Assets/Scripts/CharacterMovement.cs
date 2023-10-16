@@ -27,18 +27,12 @@ public class CharacterMovement : MonoBehaviour
         /*
         GetAxisRaw is pretty much the same as GetAxis but without the input smoothing
         */
-        
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * vInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * hInput);
-        
         Vector3 direction = new Vector3(hInput, 0f, vInput).normalized; // this is to mnake sure that when you press 2 buttons you dont move faster.
+
+        if (direction.magnitude >= 0.1f)
+        {
+           player.Move(direction * speed * Time.deltaTime);
+        }
         
-    
-        
-    
-    
-    
-    
-    
     }
 }
