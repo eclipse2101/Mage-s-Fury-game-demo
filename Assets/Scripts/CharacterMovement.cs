@@ -7,6 +7,9 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 6f;
     public float hInput; 
     public float vInput; 
+    public float turnSmootherTime = 0.1f; 
+    public float turnSmoothVelocity;
+    public Transform playerCamera; 
     public CharacterController  player; // think of this as the motor that controls our player 
     
     
@@ -29,9 +32,15 @@ public class CharacterMovement : MonoBehaviour
         */
         Vector3 direction = new Vector3(hInput, 0f, vInput).normalized; // this is to mnake sure that when you press 2 buttons you dont move faster.
 
-        if (direction.magnitude >= 0.1f)
+        // CAMEERA AND CHARACTER ROTATION MOVEMENT //
+        if (direction.magnitude >= 0.1f) // this checks if your chartacter is moving in any direction. 
         {
-           player.Move(direction * speed * Time.deltaTime);
+           float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; // this whole function makes it so that the game can get the angle or rotation it needs on the y axis depening on where your camera is facing
+           float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmootherTime);// this helps smooth the rotation turning for our player turning 
+           transform.rotation = Quaternion.Euler(0f, angle, 0f);
+           
+           Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
+           player.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
         
     }
