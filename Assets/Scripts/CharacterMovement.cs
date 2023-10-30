@@ -11,7 +11,9 @@ public class CharacterMovement : MonoBehaviour
     public float turnSmoothVelocity;
     public Transform playerCamera; 
     public CharacterController  player; // think of this as the motor that controls our player 
-    
+    private float velocity;
+    private float characterGravity = -9.81f;
+    private float gravityScaler = 3.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,8 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         
-        // BASIC CHARACTER MOVEMENT//
+        ////// BASIC CHARACTER MOVEMENT////////////////
+        
         hInput = Input.GetAxisRaw("Horizontal"); 
         vInput = Input.GetAxisRaw("Vertical");
        
@@ -32,7 +35,8 @@ public class CharacterMovement : MonoBehaviour
         */
         Vector3 direction = new Vector3(hInput, 0f, vInput).normalized; // this is to mnake sure that when you press 2 buttons you dont move faster.
 
-        // CAMEERA AND CHARACTER ROTATION MOVEMENT //
+        /////// CAMEERA AND CHARACTER ROTATION MOVEMENT ///////
+       
         if (direction.magnitude >= 0.1f) // this checks if your chartacter is moving in any direction. 
         {
            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; // this whole function makes it so that the game can get the angle or rotation it needs on the y axis depening on where your camera is facing
@@ -42,6 +46,18 @@ public class CharacterMovement : MonoBehaviour
            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
            player.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
+
+        ////////// GRAVITY PHYSIC/////////////////////////
+       
+        if (player.isGrounded && velocity < 0.0f)
+        {
+            velocity = -1.0f;
+        }
+        else 
+        {
+            velocity += characterGravity * gravityScaler * Time.deltaTime; 
+        }
         
+        direction.y = velocity;
     }
 }
