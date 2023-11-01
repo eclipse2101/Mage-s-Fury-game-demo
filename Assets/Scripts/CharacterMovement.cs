@@ -29,11 +29,13 @@ public class CharacterMovement : MonoBehaviour
         
         hInput = Input.GetAxisRaw("Horizontal"); 
         vInput = Input.GetAxisRaw("Vertical");
+
+    
        
         /*
         GetAxisRaw is pretty much the same as GetAxis but without the input smoothing
         */
-        Vector3 direction = new Vector3(hInput, 0f, vInput).normalized; // this is to mnake sure that when you press 2 buttons you dont move faster.
+         Vector3 direction = new Vector3(hInput, 0f, vInput).normalized; // this is to mnake sure that when you press 2 buttons you dont move faster.
 
         /////// CAMEERA AND CHARACTER ROTATION MOVEMENT ///////
        
@@ -47,15 +49,23 @@ public class CharacterMovement : MonoBehaviour
            player.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
 
-        ////////// GRAVITY PHYSIC/////////////////////////
+        GravityPhysic(); 
+    }
+
+    void GravityPhysic()
+    {
+       ////////// GRAVITY PHYSIC/////////////////////////
        
+        Vector3 direction = new Vector3 (0,0,0);
+        
         if (player.isGrounded && velocity < 0.0f)
         {
             velocity = -1.0f;
         }
         else 
         {
-            velocity += characterGravity * gravityScaler * Time.deltaTime; 
+            velocity += characterGravity * gravityScaler * Time.deltaTime;
+             
         }
         
         direction.y = velocity;
