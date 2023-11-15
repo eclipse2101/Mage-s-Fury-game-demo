@@ -11,11 +11,17 @@ public class CharacterMovement : MonoBehaviour
     public float turnSmoothVelocity;
     public Transform playerCamera; 
     public CharacterController  player; // think of this as the motor that controls our player 
-    private float velocity;
+    public float velocity;
     private float characterGravity = -9.81f;
     private float gravityScaler = 3.0f;
+    private Vector3 direction;
     
     // Start is called before the first frame update
+    void Awake()
+    {
+        player = GetComponent<CharacterController>();
+    }
+    
     void Start()
     {
         
@@ -47,18 +53,19 @@ public class CharacterMovement : MonoBehaviour
            
            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
            player.Move(moveDirection.normalized * speed * Time.deltaTime);
-        }
 
-        GravityPhysic(); 
+            GravityPhysic(); 
+        }
+        
+
+       
     }
 
     void GravityPhysic()
     {
        ////////// GRAVITY PHYSIC/////////////////////////
        
-        Vector3 direction = new Vector3 (0,0,0);
-        
-        if (player.isGrounded && velocity < 0.0f)
+        if (IsGrounded() && velocity < 0.0f)
         {
             velocity = -1.0f;
         }
@@ -70,4 +77,8 @@ public class CharacterMovement : MonoBehaviour
         
         direction.y = velocity;
     }
+
+    private bool IsGrounded() => player.isGrounded;
+
+
 }
