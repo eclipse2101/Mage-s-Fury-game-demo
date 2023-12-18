@@ -14,8 +14,10 @@ public class RevampedCharacterController : MonoBehaviour
     public float turnSmoothVelocity;
     public float turnSmootherTime = 0.1f; 
     float characterGravity = -9.81f;
-    float gravityScaler = 3.0f;
+    public float gravityScaler = 3.0f;
     public float velocity;
+    public float JumpPower;
+  
 
     
     
@@ -40,7 +42,7 @@ public class RevampedCharacterController : MonoBehaviour
     //// Applying Gravity ///////
     private void GravityFunction()
     {
-         if (player.isGrounded && velocity < 0.0f)// it checks if the player is grounded or not
+         if (IsOnGround() && velocity < 0.0f)// it checks if the player is grounded or not
         {
             velocity = -1.0f;
           
@@ -77,6 +79,16 @@ public class RevampedCharacterController : MonoBehaviour
        Input = context.ReadValue<Vector2>();
        direction = new Vector3(Input.x, 0f, Input.y).normalized;
     }
+
+    public void Jumping (InputAction.CallbackContext context)
+    {
+        if(!context.started ) return; // this will return nothing if the spacebar was not pressed down 
+        if (!IsOnGround()) return; // if the character is not on the ground it will return nothing 
+
+        velocity += JumpPower;
+    }
+
+    private bool IsOnGround() => player.isGrounded;
 
 }
 
