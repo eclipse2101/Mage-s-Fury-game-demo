@@ -11,19 +11,19 @@ public class RevampedCharacterController : MonoBehaviour
     public float speed;
     private Vector3 direction; 
     private Vector2 Input; 
-    public float turnSmoothVelocity;
-    public float turnSmootherTime = 0.1f; 
+    public float rotationSpeed = 500f; 
     float characterGravity = -9.81f;
     public float gravityScaler = 3.0f;
     public float velocity;
     public float JumpPower;
-  
+    private Camera mainCamera; 
 
     
     
     void Awake()
     {
         player = GetComponent<CharacterController>();
+        mainCamera = Camera.main; 
     }
     
     
@@ -33,8 +33,8 @@ public class RevampedCharacterController : MonoBehaviour
     void Update()
     {
       
-      GravityFunction();
       RotationFunction();
+      GravityFunction();
       MovementFunction();
         
     } 
@@ -60,9 +60,10 @@ public class RevampedCharacterController : MonoBehaviour
     {
          if(Input.sqrMagnitude == 0) return; // this will prevent your character from looking straight forward
         
-        var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmootherTime);// this helps smooth the rotation turning for our player turning 
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+         direction = Quaternion.Eurler(0.0f, mainCamera.transform.eulerAngles.y, 0.0f) * new Vector3(input.x, 0.0f, input.y);
+         var targetRotation = Quaternion.LookRotation(direction, Vector3.up); 
+
+         transform.rotation = Quaternion.RotateTowrads(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     } 
 
     //// CHARACTER MOVEMENT////
