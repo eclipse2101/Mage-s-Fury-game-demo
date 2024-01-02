@@ -60,10 +60,10 @@ public class RevampedCharacterController : MonoBehaviour
     {
          if(Input.sqrMagnitude == 0) return; // this will prevent your character from looking straight forward
         
-         direction = Quaternion.Eurler(0.0f, mainCamera.transform.eulerAngles.y, 0.0f) * new Vector3(input.x, 0.0f, input.y);
+         direction = Quaternion.Euler(0.0f, mainCamera.transform.eulerAngles.y, 0.0f) * new Vector3(Input.x, 0.0f, Input.y);
          var targetRotation = Quaternion.LookRotation(direction, Vector3.up); 
 
-         transform.rotation = Quaternion.RotateTowrads(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     } 
 
     //// CHARACTER MOVEMENT////
