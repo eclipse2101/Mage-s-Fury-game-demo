@@ -508,10 +508,8 @@ MonoBehaviour:
     horizontalInput: 20
     verticalInput: 20
   cameraAngle:
-    pitchMin: -30
-    pitchMax: 90
-    yawMin: -360
-    yawMax: 360
+    min: -90
+    max: 90
 --- !u!1 &1401426137
 GameObject:
   m_ObjectHideFlags: 0
