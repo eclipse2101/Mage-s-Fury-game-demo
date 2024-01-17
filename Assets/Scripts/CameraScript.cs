@@ -23,8 +23,8 @@ public class CameraScript : MonoBehaviour
     {
         cameraRotation.Yaw += input.x * MSenitivity.horizontalInput * Time.deltaTime; 
         cameraRotation.Pitch += input.y * MSenitivity.verticalInput * Time.deltaTime;
-        cameraRotation.Pitch = Mathf.Clamp(cameraRotation.Pitch, cameraAngle.min, cameraAngle.max);
-        cameraRotation.Yaw = Mathf.Clamp(cameraRotation.Yaw, cameraAngle.min, cameraAngle.max);
+        cameraRotation.Pitch = Mathf.Clamp(cameraRotation.Pitch, cameraAngle.PitchMin, cameraAngle.PitchMax);
+        cameraRotation.Yaw = Mathf.Clamp(cameraRotation.Yaw, cameraAngle.YawMin, cameraAngle.YawMax);
     }
     
     void LateUpdate()
@@ -57,6 +57,8 @@ public class CameraScript : MonoBehaviour
  [Serializable]
  public struct CameraAngle
  {
-    public float min;
-    public float max; 
+    public float PitchMin;
+    public float PitchMax;
+    public float YawMin;
+    public float YawMax;  
  }
