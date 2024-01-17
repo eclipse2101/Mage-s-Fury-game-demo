@@ -123,7 +123,18 @@
                 {
                     "name": "",
                     "id": "5103caac-36af-4fd3-830c-ec7c020974ae",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "741c9092-fac7-4dc6-bca4-74746619efc3",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

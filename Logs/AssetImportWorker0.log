@@ -159,3 +159,4 @@ Received Import Request.
   path: Assets/Prefabs/Test Dummy Player.prefab
   artifactKey: Guid(830328c1d9a8a4448a6b04193dc7b839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Test Dummy Player.prefab using Guid(830328c1d9a8a4448a6b04193dc7b839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9450796b3aad4b1cbbb27f4449f1fbe4') in 0.252162 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
