@@ -183,3 +183,4 @@ Received Import Request.
   path: Assets/Kevin Iglesias/3DCharacterDummy/SourceFiles/Blender Source Files.zip
   artifactKey: Guid(62e0ffdb343c75b48befedb5d1d8a1d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Kevin Iglesias/3DCharacterDummy/SourceFiles/Blender Source Files.zip using Guid(62e0ffdb343c75b48befedb5d1d8a1d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc4c4081b68607963da043fecde696ef') in 1.199666 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
