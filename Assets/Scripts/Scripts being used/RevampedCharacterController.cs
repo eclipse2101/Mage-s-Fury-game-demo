@@ -17,8 +17,12 @@ public class RevampedCharacterController : MonoBehaviour
     public float velocity;
     public float JumpPower;
     private Camera mainCamera; 
+    Animator animationRunner;
 
-    
+    void Start()
+    {
+        animationRunner = GetComponent<Animator>();
+    }
     
     void Awake()
     {
@@ -45,7 +49,7 @@ public class RevampedCharacterController : MonoBehaviour
          if (IsOnGround() && velocity < 0.0f)// it checks if the player is grounded or not
         {
             velocity = -1.0f;
-          Debug.Log("on ground"); 
+          
         }
         else
         {
@@ -53,7 +57,7 @@ public class RevampedCharacterController : MonoBehaviour
         }
          
          direction.y = velocity;
-         Debug.Log("gravity working");
+       
     }
     
     //// CHARACTER ROTATION////
@@ -65,7 +69,8 @@ public class RevampedCharacterController : MonoBehaviour
          var targetRotation = Quaternion.LookRotation(direction, Vector3.up); 
 
          transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-         Debug.Log("rotation working"); 
+        
+         
     } 
 
     //// CHARACTER MOVEMENT////
@@ -74,7 +79,8 @@ public class RevampedCharacterController : MonoBehaviour
         /// the line of code that makes the character actual useable//
 
          player.Move(direction * speed * Time.deltaTime);
-         Debug.Log("movment working");
+         
+         animationRunner.SetBool("is running", true);  
     }
     
     
@@ -82,7 +88,7 @@ public class RevampedCharacterController : MonoBehaviour
     {
        Input = context.ReadValue<Vector2>();
        direction = new Vector3(Input.x, 0f, Input.y).normalized;
-       Debug.Log("movement input working");
+       
     }
 
     public void Jumping (InputAction.CallbackContext context)
@@ -91,7 +97,7 @@ public class RevampedCharacterController : MonoBehaviour
         if (!IsOnGround()) return; // if the character is not on the ground it will return nothing 
 
         velocity += JumpPower;
-        Debug.Log("jumping working");
+      
     }
 
     private bool IsOnGround() => player.isGrounded;
