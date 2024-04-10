@@ -9,12 +9,12 @@ public class RevampedCharacterController : MonoBehaviour
 {
     public CharacterController player; // think of this as the motor that controls our player 
     public float speed;
-    private Vector3 direction; 
+    public Vector3 direction; 
     private Vector2 Input; 
     public float rotationSpeed = 500f; 
     float characterGravity = -9.81f;
     public float gravityScaler = 3.0f;
-    public float velocity;
+    public float velocity = -1.0f;
     public float JumpPower;
     private Camera mainCamera; 
     Animator animationRunner;
@@ -40,7 +40,38 @@ public class RevampedCharacterController : MonoBehaviour
       RotationFunction();
       GravityFunction();
       MovementFunction();
-        
+      
+      // animation statments///
+      if (direction.x != 0f || direction.z != 0f)
+      {
+        animationRunner.SetBool("is running", true);
+        animationRunner.SetBool("jumped", false);
+        animationRunner.SetBool("is falling", false);
+      }
+      else
+      {
+        animationRunner.SetBool("is running", false);
+      }
+
+      if (velocity > -1.0f)
+      {
+        animationRunner.SetBool("jumped", true);
+        animationRunner.SetBool("is running", false);
+      }
+      else if( velocity < -1.0f)
+      {
+        animationRunner.SetBool("jumped", false);
+        animationRunner.SetBool("is running", false);
+        animationRunner.SetBool("is falling", true);
+      }
+      /*
+       if (velocity = -1)
+      {
+        animationRunner.SetBool("jumped", false);
+        animationRunner.SetBool("is running", false);
+        animationRunner.SetBool("is falling", false);
+      }
+      */
     } 
     
     //// Applying Gravity ///////
@@ -49,11 +80,13 @@ public class RevampedCharacterController : MonoBehaviour
          if (IsOnGround() && velocity < 0.0f)// it checks if the player is grounded or not
         {
             velocity = -1.0f;
-          
+          //animationRunner.SetBool("jumped", false);
+          //animationRunner.SetBool("is falling", true);
         }
         else
         {
             velocity += characterGravity * gravityScaler * Time.deltaTime;
+            //animationRunner.SetBool("is falling", false);
         }
          
          direction.y = velocity;
@@ -79,8 +112,7 @@ public class RevampedCharacterController : MonoBehaviour
         /// the line of code that makes the character actual useable//
 
          player.Move(direction * speed * Time.deltaTime);
-         
-         animationRunner.SetBool("is running", true);  
+   
     }
     
     
@@ -97,6 +129,7 @@ public class RevampedCharacterController : MonoBehaviour
         if (!IsOnGround()) return; // if the character is not on the ground it will return nothing 
 
         velocity += JumpPower;
+        //animationRunner.SetBool("jumped", true);
       
     }
 
