@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 3187476063553648826}
   - component: {fileID: 7201529151246489728}
   - component: {fileID: 2009786495740524741}
+  - component: {fileID: 5004863417338790482}
   m_Layer: 0
   m_Name: Revon 1
   m_TagString: Untagged
@@ -909,7 +910,7 @@ Transform:
   m_GameObject: {fileID: 2843988234128368128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.852295, y: 1.34, z: -2.205099}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4823405860537071257}
   - {fileID: 1716566611868992348}
@@ -954,6 +955,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!114 &5004863417338790482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843988234128368128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a96fe467e454d658d5f83c518bb506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2009786495740524741}
+  speed: 5
+  direction: {x: 0, y: 0, z: 0}
+  rotationSpeed: 500
+  gravityScaler: 3
+  velocity: -1
+  JumpPower: 10
+  timer: 0
+  hitCount: 0
+  cooldown: 0
 --- !u!1 &2903812304998491126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3753260367861926754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.852295, y: -0.16000009, z: 2.205099}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3187476063553648826}
@@ -1167,9 +1190,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2843988234128368128}
+      - m_Target: {fileID: 5004863417338790482}
         m_TargetAssemblyTypeName: RevampedCharacterController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Movement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1183,9 +1206,9 @@ MonoBehaviour:
     m_ActionName: Gameplay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2843988234128368128}
+      - m_Target: {fileID: 5004863417338790482}
         m_TargetAssemblyTypeName: RevampedCharacterController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Jumping
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1199,9 +1222,9 @@ MonoBehaviour:
     m_ActionName: Gameplay/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2843988234128368128}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CameraScript, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Look
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1214,7 +1237,19 @@ MonoBehaviour:
     m_ActionId: 267db7bd-079e-4252-bdf0-35004b976f43
     m_ActionName: Gameplay/Looking[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5004863417338790482}
+        m_TargetAssemblyTypeName: RevampedCharacterController, Assembly-CSharp
+        m_MethodName: Attacking
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 73bc1789-ab5f-4191-b2c1-0982d5923ba3
     m_ActionName: Gameplay/Attack[/Mouse/leftButton,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0

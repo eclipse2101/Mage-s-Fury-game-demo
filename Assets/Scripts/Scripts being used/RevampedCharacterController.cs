@@ -18,6 +18,9 @@ public class RevampedCharacterController : MonoBehaviour
     public float JumpPower;
     private Camera mainCamera; 
     Animator animationRunner;
+    public int timer;
+    public int hitCount; 
+    public int cooldown; 
 
     void Start()
     {
@@ -42,36 +45,9 @@ public class RevampedCharacterController : MonoBehaviour
       MovementFunction();
       
       // animation statments///
-      if (direction.x != 0f || direction.z != 0f)
-      {
-        animationRunner.SetBool("is running", true);
-        animationRunner.SetBool("jumped", false);
-        animationRunner.SetBool("is falling", false);
-      }
-      else
-      {
-        animationRunner.SetBool("is running", false);
-      }
-
-      if (velocity > -1.0f)
-      {
-        animationRunner.SetBool("jumped", true);
-        animationRunner.SetBool("is running", false);
-      }
-      else if( velocity < -1.0f)
-      {
-        animationRunner.SetBool("jumped", false);
-        animationRunner.SetBool("is running", false);
-        animationRunner.SetBool("is falling", true);
-      }
-      /*
-       if (velocity = -1)
-      {
-        animationRunner.SetBool("jumped", false);
-        animationRunner.SetBool("is running", false);
-        animationRunner.SetBool("is falling", false);
-      }
-      */
+      AnimationChecker();
+      
+      
     } 
     
     //// Applying Gravity ///////
@@ -80,13 +56,12 @@ public class RevampedCharacterController : MonoBehaviour
          if (IsOnGround() && velocity < 0.0f)// it checks if the player is grounded or not
         {
             velocity = -1.0f;
-          //animationRunner.SetBool("jumped", false);
-          //animationRunner.SetBool("is falling", true);
+           animationRunner.SetBool("is falling", false);
         }
         else
         {
             velocity += characterGravity * gravityScaler * Time.deltaTime;
-            //animationRunner.SetBool("is falling", false);
+           
         }
          
          direction.y = velocity;
@@ -129,8 +104,47 @@ public class RevampedCharacterController : MonoBehaviour
         if (!IsOnGround()) return; // if the character is not on the ground it will return nothing 
 
         velocity += JumpPower;
-        //animationRunner.SetBool("jumped", true);
       
+    }
+
+    public void Attacking(InputAction.CallbackContext context) 
+    {
+      if (!IsOnGround()) return;  
+      //Debug.Log("player clicked the attack button");
+    }
+    
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 1);
+    }
+    
+    void AnimationChecker()
+    {
+      if (direction.x != 0f || direction.z != 0f)
+      {
+        animationRunner.SetBool("is running", true);
+        animationRunner.SetBool("jumped", false);
+        animationRunner.SetBool("is falling", false);
+      }
+      else
+      {
+        animationRunner.SetBool("is running", false);
+      }
+
+      if (velocity > -1.0f)
+      {
+        animationRunner.SetBool("jumped", true);
+        animationRunner.SetBool("is running", false);
+      }
+      else if( velocity < -1.0f)
+      {
+        animationRunner.SetBool("jumped", false);
+        animationRunner.SetBool("is running", false);
+        animationRunner.SetBool("is falling", true);
+      }
+
     }
 
     private bool IsOnGround() => player.isGrounded;
