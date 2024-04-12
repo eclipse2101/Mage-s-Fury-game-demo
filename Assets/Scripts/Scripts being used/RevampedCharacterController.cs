@@ -102,7 +102,7 @@ public class RevampedCharacterController : MonoBehaviour
     {
         if(!context.started ) return; // this will return nothing if the spacebar was not pressed down 
         if (!IsOnGround()) return; // if the character is not on the ground it will return nothing 
-
+        Debug.Log("player has jumped");
         velocity += JumpPower;
       
     }
@@ -110,6 +110,23 @@ public class RevampedCharacterController : MonoBehaviour
     public void Attacking(InputAction.CallbackContext context) 
     {
       if (!IsOnGround()) return;  
+      
+      hitCount++;
+      
+      if(hitCount == 1)
+       {
+        animationRunner.SetInteger("punches", 1);
+       }
+       
+       if(hitCount == 2)
+       {
+        animationRunner.SetInteger("punches", 2);
+       }
+       
+       if(hitCount == 3)
+       {
+        animationRunner.SetInteger("punches", 3);
+       }
       //Debug.Log("player clicked the attack button");
     }
     

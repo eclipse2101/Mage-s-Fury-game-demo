@@ -4,49 +4,59 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemies1;
-    public GameObject enemies2;
-   public float spawnarea1 = 10;
-   public float spawnarea2 = 10;
-   public int enemyCount;
-   public int WaveNumber = 1; 
-   
- 
-   
+    public GameObject[] animalPrefabs;
+    float SpawnRangeX = 20;
+    float spawnPosZ = 35;
+    float randomSpawnRangeZ = 14;
+    public float startingSpawn = 5; 
+    public float spawnTiming = 1.5f;
+    float generatorNumber; 
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemyWave(3);
-        
+        InvokeRepeating("SpawnRandomAnimal", startingSpawn, spawnTiming);
     }
 
     // Update is called once per frame
-    private Vector3 GenerateSpawnArea()
-    {
-        float rsax = Random.Range(spawnarea1, -spawnarea1);
-        float rsaz = Random.Range(spawnarea2, -spawnarea2); 
-        Vector3 randomPos =  new Vector3( rsax, 0, rsaz);
-        return randomPos;
-    }
-
-    void SpawnEnemyWave(int enemiesSpawnNumber)
-    {
-       for (int i = 0; i < enemiesSpawnNumber; i++)
-       {
-          Instantiate(enemies1, GenerateSpawnArea(), enemies1.transform.rotation);
-          Instantiate(enemies2, GenerateSpawnArea(), enemies2.transform.rotation);
-       }
-
-       WaveNumber ++; 
-    }
-
     void Update()
     {
-       enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        if (enemyCount == 0) 
+        
+    }
+
+    void SpawnRandomAnimal()
+
+    {
+        generatorNumber = Random.Range(1,3);
+
+        if (generatorNumber == 1)
         {
-            SpawnEnemyWave(WaveNumber);
-           
+            Vector3 spawnPos = new Vector3(Random.Range(-SpawnRangeX, SpawnRangeX), 0, spawnPosZ); 
+            
+            int animalIndex = Random.Range(0, animalPrefabs.Length); 
+            
+            Instantiate(animalPrefabs[animalIndex], spawnPos, animalPrefabs[animalIndex].transform.rotation);
+        }
+
+        if (generatorNumber == 2)
+        {
+          Vector3 spawnPos = new Vector3(-25, 0, Random.Range(-randomSpawnRangeZ, randomSpawnRangeZ)); 
+            
+            int animalIndex = Random.Range(0, animalPrefabs.Length); 
+            
+            Instantiate(animalPrefabs[animalIndex], spawnPos, Quaternion.Euler(0, 90, 0));
+
+        }
+
+        if (generatorNumber == 3)
+        {
+          Vector3 spawnPos = new Vector3(25, 0, Random.Range(-randomSpawnRangeZ, randomSpawnRangeZ)); 
+            
+            int animalIndex = Random.Range(0, animalPrefabs.Length); 
+            
+            Instantiate(animalPrefabs[animalIndex], spawnPos, Quaternion.Euler(0, -90, 0));
+            
         }
     }
 }
