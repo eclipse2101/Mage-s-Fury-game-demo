@@ -3,7 +3,13 @@ guid: 664a6525d5a6344cbbfcfe97939d1e21
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ScreenOne: {instanceID: 0}
+  - ScreenTwo: {instanceID: 0}
+  - ScreenUno: {instanceID: 0}
+  - ScreenDuo: {instanceID: 0}
+  - errorSound: {fileID: 8300000, guid: 1d19791903719494d8e33550ef9ea972, type: 3}
+  - selectSound: {fileID: 8300000, guid: 46b6b8277705d694ca639e93fba3ca72, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

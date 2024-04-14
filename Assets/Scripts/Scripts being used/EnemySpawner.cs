@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -10,7 +12,8 @@ public class EnemySpawner : MonoBehaviour
     float randomSpawnRangeZ = 14;
     public float startingSpawn = 5; 
     public float spawnTiming = 1.5f;
-    float generatorNumber; 
+    float generatorNumber;
+    public TextMeshProUGUI gameOverScreen;
     
     
     // Start is called before the first frame update
@@ -67,5 +70,10 @@ public class EnemySpawner : MonoBehaviour
             
             Instantiate(animalPrefabs[animalIndex], spawnPos, Quaternion.Euler(0, -180, 0));
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverScreen.gameObject.SetActive(true);
     }
 }
