@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class CameraScript : MonoBehaviour
 {
      [SerializeField] private Transform focusPoint; // serializefields make a variable private while making it acciseable in the unity editor without making it public
-     private float offset; 
+     public float offset; 
      private Vector2 input; 
 
      [SerializeField] private MouseSensitivity MSenitivity;

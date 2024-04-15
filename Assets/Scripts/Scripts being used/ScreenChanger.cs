@@ -46,7 +46,7 @@ public class ScreenChanger : MonoBehaviour
         }
         else
         {
-           buttonSound.PlayOneShot(errorSound, 1.5f); 
+           buttonSound.PlayOneShot(errorSound, 3.0f); 
         }
     
         /*

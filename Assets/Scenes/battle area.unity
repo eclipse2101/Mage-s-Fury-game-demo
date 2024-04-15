@@ -231,7 +231,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 200, y: 0.5, z: 200}
+  m_Size: {x: 2000, y: 0.5, z: 2000}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &732771792
 MonoBehaviour:
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182004da2689b064e9b0a14746a9cc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
 --- !u!4 &732771793
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,6 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focusPoint: {fileID: 1919260451}
+  offset: 3
   MSenitivity:
     horizontalInput: 30
     verticalInput: 30
