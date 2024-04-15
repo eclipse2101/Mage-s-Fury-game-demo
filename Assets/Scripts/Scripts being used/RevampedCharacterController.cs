@@ -19,8 +19,10 @@ public class RevampedCharacterController : MonoBehaviour
     private Camera mainCamera; 
     Animator animationRunner;
     public int timer;
-    public int hitCount; 
+    public int hitCount = 0; 
     public int cooldown; 
+    public GameObject hand1;
+    public GameObject hand2;
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class RevampedCharacterController : MonoBehaviour
       
       // animation statments///
       AnimationChecker();
+      
       
       
     } 
@@ -107,26 +110,36 @@ public class RevampedCharacterController : MonoBehaviour
       
     }
 
-    public void Attacking(InputAction.CallbackContext context) 
+    public void Attacking() 
     {
       if (!IsOnGround()) return;  
       
       hitCount++;
       
+      /*
       if(hitCount == 1)
        {
-        animationRunner.SetInteger("punches", 1);
+        animationRunner.SetInteger("punches", hitCount);
        }
        
        if(hitCount == 2)
        {
-        animationRunner.SetInteger("punches", 2);
+        animationRunner.SetInteger("punches", hitCount);
        }
        
        if(hitCount == 3)
        {
         animationRunner.SetInteger("punches", 3);
        }
+       */
+
+
+       if(hitCount > 3)
+       {
+        hitCount = 0;
+       }
+
+       animationRunner.SetInteger("punches", hitCount);
       //Debug.Log("player clicked the attack button");
     }
     
@@ -134,7 +147,7 @@ public class RevampedCharacterController : MonoBehaviour
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 1);
+        Gizmos.DrawSphere(hand1.transform.position, 0.75f);
     }
     
     void AnimationChecker()
