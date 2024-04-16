@@ -5,6 +5,10 @@ using UnityEngine;
 public class AttackInput : MonoBehaviour
 {
     RevampedCharacterController playerScript;
+
+    public GameObject hand1;
+    public GameObject hand2;
+    public int hitTimer = 3; 
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,11 +20,23 @@ public class AttackInput : MonoBehaviour
     {
         if(playerScript != null)
         {
-            Debug.Log("found it");
+            //Debug.Log("found it");
             if(Input.GetMouseButtonDown(0))
             {
                 playerScript.Attacking();
+                hitTimer = 3;
             }
+            /*
+            if (playerScript.hitCount >= 1)
+            {
+                hitTimer = hitTimer - 1;
+            }
+
+            if (hitTimer == 0)
+            {
+                playerScript.hitCount = 0;
+            }
+            */
         }
         
     }
