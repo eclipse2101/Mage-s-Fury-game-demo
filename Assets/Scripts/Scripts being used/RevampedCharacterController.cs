@@ -105,7 +105,7 @@ public class RevampedCharacterController : MonoBehaviour
     {
         if(!context.started ) return; // this will return nothing if the spacebar was not pressed down 
         if (!IsOnGround()) return; // if the character is not on the ground it will return nothing 
-        Debug.Log("player has jumped");
+        //Debug.Log("player has jumped");
         velocity += JumpPower;
       
     }
@@ -115,6 +115,16 @@ public class RevampedCharacterController : MonoBehaviour
       if (!IsOnGround()) return;  
       
       hitCount++;
+
+      Collider[] hitColliders = Physics.OverlapSphere(hand1.transform.position, 3);
+      foreach (var hitCollider in hitColliders)
+        {
+          if(hitCollider.name == "Bad Guy")
+          {
+            Destroy(hitCollider.gameObject);
+          }
+            Debug.Log(hitCollider.name);
+        }
       
       /*
       if(hitCount == 1)
@@ -138,7 +148,6 @@ public class RevampedCharacterController : MonoBehaviour
        {
         hitCount = 0;
        }
-
        animationRunner.SetInteger("punches", hitCount);
       //Debug.Log("player clicked the attack button");
     }
@@ -146,8 +155,9 @@ public class RevampedCharacterController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(hand1.transform.position, 0.75f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(hand1.transform.position, 3f);
+        Gizmos.DrawSphere(hand2.transform.position, 3f);
     }
     
     void AnimationChecker()

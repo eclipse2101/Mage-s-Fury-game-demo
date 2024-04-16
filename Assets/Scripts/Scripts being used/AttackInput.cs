@@ -8,13 +8,18 @@ public class AttackInput : MonoBehaviour
 
     public GameObject hand1;
     public GameObject hand2;
-    public int hitTimer = 3; 
+    public float hitTimer = 0.05f; 
+    Animator animationRunnerA;
     // Start is called before the first frame update
     void Awake()
     {
         playerScript = GetComponent<RevampedCharacterController>();
     }
 
+    void Start()
+    {
+        animationRunnerA = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +29,8 @@ public class AttackInput : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 playerScript.Attacking();
-                hitTimer = 3;
+                StartCoroutine(AttackReset());
+
             }
             /*
             if (playerScript.hitCount >= 1)
@@ -39,5 +45,12 @@ public class AttackInput : MonoBehaviour
             */
         }
         
+    }
+
+    IEnumerator AttackReset()
+    {
+        yield return new WaitForSeconds(hitTimer);
+        playerScript.hitCount = 0;
+        animationRunnerA.SetInteger("punches", 0);
     }
 }
