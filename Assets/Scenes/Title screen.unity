@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5277,9 +5277,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Keep in mind that this is a game demo and only has a test mode and minigame
-    so far. I'm planning to add actual combat to the game. This game was rushed in
-    order to get a grade for my class. I apoloigze for not being able to go with
-    my original idea for this game.
+    so far. There is combat in the game but Its kinda buggy right now. This game
+    was rushed in order to get a grade for my class. I apoloigze for not being able
+    to go with my original idea for this game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
