@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ObjectDeleter : MonoBehaviour
 {
-     private EnemySpawner SpawnerScript;
+     private ObjectSpawner SpawnerScript;
      private AudioSource buttonSound;
      public AudioClip deathSound;
 
     void Awake()
      {
-       SpawnerScript = GameObject.Find("enemy spawner").GetComponent<EnemySpawner>();
+       SpawnerScript = GameObject.Find("enemy spawner").GetComponent<ObjectSpawner>();
      }
 
      void Start()

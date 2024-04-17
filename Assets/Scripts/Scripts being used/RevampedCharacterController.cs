@@ -23,10 +23,13 @@ public class RevampedCharacterController : MonoBehaviour
     public int cooldown; 
     public GameObject hand1;
     public GameObject hand2;
+    //Object[] enemyHealthPoint; 
 
     void Start()
     {
         animationRunner = GetComponent<Animator>();
+        //enemyHealthPoint = FindObjectsOfType(typeof(EnemyHealth));
+
     }
     
     void Awake()
@@ -114,35 +117,38 @@ public class RevampedCharacterController : MonoBehaviour
     {
       if (!IsOnGround()) return;  
       
-      hitCount++;
-
-      Collider[] hitColliders = Physics.OverlapSphere(hand1.transform.position, 3);
-      foreach (var hitCollider in hitColliders)
-        {
-          if(hitCollider.name == "Bad Guy")
-          {
-            Destroy(hitCollider.gameObject);
-          }
+       hitCount++;
+       
+       if(hitCount == 1 || hitCount == 3)
+       {
+         Collider[] hitColliders = Physics.OverlapSphere(hand1.transform.position, 3);
+       
+        
+         foreach (var hitCollider in hitColliders)
+         {
+          if(hitCollider.CompareTag("enemy"))
+           {
+            var enemy = hitCollider.GetComponent<EnemyHealth>();
+            enemy.EnemyHp = enemy.EnemyHp - 1;
+           }
             Debug.Log(hitCollider.name);
-        }
-      
-      /*
-      if(hitCount == 1)
-       {
-        animationRunner.SetInteger("punches", hitCount);
+         }
        }
-       
-       if(hitCount == 2)
-       {
-        animationRunner.SetInteger("punches", hitCount);
-       }
-       
-       if(hitCount == 3)
-       {
-        animationRunner.SetInteger("punches", 3);
-       }
-       */
 
+       if (hitCount == 2)
+       {
+         Collider[] hitColliders = Physics.OverlapSphere(hand2.transform.position, 3);
+      
+         foreach (var hitCollider in hitColliders)
+         {
+          if(hitCollider.CompareTag("enemy"))
+           {
+            var enemy = hitCollider.GetComponent<EnemyHealth>();
+            enemy.EnemyHp = enemy.EnemyHp - 1;
+           }
+            Debug.Log(hitCollider.name);
+         }
+       }
 
        if(hitCount > 3)
        {
