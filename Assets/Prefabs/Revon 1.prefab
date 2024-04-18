@@ -894,6 +894,7 @@ GameObject:
   - component: {fileID: 7201529151246489728}
   - component: {fileID: 2009786495740524741}
   - component: {fileID: 5004863417338790482}
+  - component: {fileID: 388020312}
   m_Layer: 0
   m_Name: Revon 1
   m_TagString: Untagged
@@ -968,7 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2009786495740524741}
-  speed: 5
+  speed: 10
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 500
   gravityScaler: 3
@@ -977,6 +978,23 @@ MonoBehaviour:
   timer: 0
   hitCount: 0
   cooldown: 0
+  hand1: {fileID: 7839762902676472844}
+  hand2: {fileID: 8255040025982197998}
+--- !u!114 &388020312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843988234128368128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02e6426678124cbc88aba4ef5128f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand1: {fileID: 7839762902676472844}
+  hand2: {fileID: 8255040025982197998}
+  hitTimer: 3
 --- !u!1 &2903812304998491126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,19 +1255,7 @@ MonoBehaviour:
     m_ActionId: 267db7bd-079e-4252-bdf0-35004b976f43
     m_ActionName: Gameplay/Looking[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5004863417338790482}
-        m_TargetAssemblyTypeName: RevampedCharacterController, Assembly-CSharp
-        m_MethodName: Attacking
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 73bc1789-ab5f-4191-b2c1-0982d5923ba3
     m_ActionName: Gameplay/Attack[/Mouse/leftButton,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0

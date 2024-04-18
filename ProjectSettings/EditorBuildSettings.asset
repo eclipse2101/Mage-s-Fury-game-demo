@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/test scene.unity
     guid: 030d5e2865d504e7e90711920936a5dd
   - enabled: 1
-    path: Assets/Scenes/battle area.unity
+    path: Assets/Scenes/king of the plane.unity
     guid: 459824b45094ac84eb5581654965874b
   m_configObjects: {}
