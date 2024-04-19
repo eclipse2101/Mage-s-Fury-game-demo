@@ -112,7 +112,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7310905648868250256
 MonoBehaviour:
@@ -128,4 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHp: 3
   speed: 5
-  player: {fileID: 0}
+  player: {fileID: 2843988234128368128, guid: b590563c2550a6f4faf1cf695b6ae150, type: 3}

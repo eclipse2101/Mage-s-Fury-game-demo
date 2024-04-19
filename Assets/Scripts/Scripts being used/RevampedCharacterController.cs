@@ -29,6 +29,8 @@ public class RevampedCharacterController : MonoBehaviour
     {
         animationRunner = GetComponent<Animator>();
         //enemyHealthPoint = FindObjectsOfType(typeof(EnemyHealth));
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
     }
     

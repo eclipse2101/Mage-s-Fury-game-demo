@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 1322983979}
   - component: {fileID: 1322983978}
   - component: {fileID: 1322983977}
+  - component: {fileID: 1322983981}
   m_Layer: 0
   m_Name: death plane
   m_TagString: Untagged
@@ -634,10 +635,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322983976}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 200, y: 0, z: 200}
+  m_Size: {x: 300, y: 0, z: 300}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1322983980
 Transform:
@@ -647,12 +648,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322983976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1322983981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322983976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2af0a27499464849b245f4fd846e300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyspawner: 1
+  animalPrefabs: []
+  startingSpawn: 5
+  spawnTiming: 1.5
+  gameOverScreen: {fileID: 0}
+  enemies: {fileID: 7310905648868250266, guid: eb51704ed01f542e4aea1ccc1373e318, type: 3}
+  enemyCount: 0
+  WaveNumber: 3
 --- !u!1 &1688930601
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688930601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6155752, y: 0.0109537775, z: -4.501113}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
