@@ -23,25 +23,31 @@ public class ObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(enemyspawner = false)
+        if(enemyspawner == false)
         {
           InvokeRepeating("SpawnRandomAnimal", startingSpawn, spawnTiming);
         }
         else
         {
-            SpawnEnemyWave(3);
+           SpawnEnemyWave(3);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemyCount = FindObjectsOfType<EnemyHealth>().Length;
+        
+        if (enemyspawner = false)
+    {
+           enemyCount = FindObjectsOfType<EnemyHealth>().Length;
+       
         if (enemyCount == 0) 
         {
             SpawnEnemyWave(WaveNumber);
            
-        }
+        } 
+    }
+        
     }
 
     void SpawnRandomAnimal()
@@ -107,5 +113,7 @@ public class ObjectSpawner : MonoBehaviour
     public void GameOver()
     {
         gameOverScreen.gameObject.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

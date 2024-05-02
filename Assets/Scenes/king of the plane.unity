@@ -1216,6 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2af0a27499464849b245f4fd846e300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyspawner: 0
   animalPrefabs:
   - {fileID: 5288263580525025313, guid: 30badde409aa1dd478c44f862bfd9ea5, type: 3}
   - {fileID: 1732005782660124577, guid: 9642ef8c9cd787645bbbeb13cff68659, type: 3}
@@ -1226,6 +1227,9 @@ MonoBehaviour:
   startingSpawn: 5
   spawnTiming: 2
   gameOverScreen: {fileID: 1532047012}
+  enemies: {fileID: 7310905648868250266, guid: eb51704ed01f542e4aea1ccc1373e318, type: 3}
+  enemyCount: 0
+  WaveNumber: 1
 --- !u!4 &1947094023
 Transform:
   m_ObjectHideFlags: 0
