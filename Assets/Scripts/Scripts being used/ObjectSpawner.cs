@@ -98,7 +98,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         float rsax = Random.Range(SpawnRangeX, -SpawnRangeX);
         float rsaz = Random.Range(SpawnRangeX, -SpawnRangeX); 
-        Vector3 randomPos =  new Vector3( rsax, 2, rsaz);
+        Vector3 randomPos =  new Vector3( rsax, 0, rsaz);
         return randomPos;
     }
 

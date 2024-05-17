@@ -220,6 +220,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 388020309}
+    - target: {fileID: 7310905648868250256, guid: eb51704ed01f542e4aea1ccc1373e318,
+        type: 3}
+      propertyPath: EnemyHp
+      value: 30000000
+      objectReference: {fileID: 0}
     - target: {fileID: 7310905648868250266, guid: eb51704ed01f542e4aea1ccc1373e318,
         type: 3}
       propertyPath: m_Name
@@ -2039,6 +2044,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 388020309}
+    - target: {fileID: 7310905648868250256, guid: eb51704ed01f542e4aea1ccc1373e318,
+        type: 3}
+      propertyPath: EnemyHp
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7310905648868250266, guid: eb51704ed01f542e4aea1ccc1373e318,
         type: 3}
       propertyPath: m_Name

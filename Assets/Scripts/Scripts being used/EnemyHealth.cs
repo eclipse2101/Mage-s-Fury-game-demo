@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public int EnemyHp= 3; 
     public float speed; 
     Rigidbody badGuyRb; 
-    public GameObject player; 
+     GameObject player; 
 
      
     
@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         badGuyRb = GetComponent<Rigidbody>();
-        // player = GameObject.Find("Player"); 
+        player = GameObject.Find("Revon 1"); 
     }
 
     // Update is called once per frame

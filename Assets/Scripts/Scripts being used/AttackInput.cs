@@ -10,6 +10,7 @@ public class AttackInput : MonoBehaviour
     public GameObject hand2;
     public float hitTimer = 0.05f; 
     Animator animationRunnerA;
+    public bool ShiftLock = true; 
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,6 +46,22 @@ public class AttackInput : MonoBehaviour
             */
         }
         
+        //Shift lock////
+      if(Input.GetKeyDown(KeyCode.LeftShift))
+      {
+        ShiftLock =! ShiftLock; 
+      }
+      
+      if(ShiftLock == true)
+      {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+      }
+      else
+      {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+      }
     }
 
     IEnumerator AttackReset()

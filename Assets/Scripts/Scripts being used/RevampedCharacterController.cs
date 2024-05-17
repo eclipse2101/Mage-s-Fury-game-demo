@@ -23,6 +23,7 @@ public class RevampedCharacterController : MonoBehaviour
     public int cooldown; 
     public GameObject hand1;
     public GameObject hand2;
+    
     //Object[] enemyHealthPoint; 
 
     void Start()
@@ -53,7 +54,6 @@ public class RevampedCharacterController : MonoBehaviour
       
       // animation statments///
       AnimationChecker();
-      
       
       
     } 

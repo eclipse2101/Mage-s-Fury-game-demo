@@ -4866,7 +4866,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "* Use WASD to move around \n* Press space to jump\n* Move the mouse around
-    to move your camera\n* Press M1 to attack\n\nOther than that have fun :)"
+    to move your camera\n* Press M1 to attack\n*Press Left Shift to Turn On and Off
+    Shift Lock\n\nOther than that have fun :)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
